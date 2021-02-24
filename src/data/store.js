@@ -39,9 +39,6 @@ function Store(filepath){
     }
     this.Set = function(key,item){
         this.data.set(key,{item: item,persist : false})
-        console.log( this.data.get(key))
-        console.log(item)
-        console.log("----")
     }
     this.Save = function(key,item){
         this.data.set(key,{item: item,persist : true})
