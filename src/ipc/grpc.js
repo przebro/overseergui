@@ -1,5 +1,5 @@
 'use strict'
-var proto_path = '/Users/casual/dev/goprojects/goscheduler/proto/services.proto'
+var proto_path = 'services.proto'
 
 const fs = require('fs')
 var grpc = require('grpc');
@@ -14,7 +14,6 @@ var packageDefinition = protoLoader.loadSync(
     });
 
 var service = grpc.loadPackageDefinition(packageDefinition).proto;
-// var rServiceClient
 var authService
 var resourceService
 var taskService
