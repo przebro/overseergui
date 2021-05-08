@@ -10,6 +10,10 @@ export const ticketList = 'msg-ticket-list'
 export const ticketAdd = 'msg-ticket-add'
 export const ticketRemove = 'msg-ticket-remove'
 
+export const flagList = 'msg-ticket-list'
+export const flagAdd = 'msg-flag-add'
+export const flagDestroy = 'msg-flag-destroy'
+
 export const rolesList = 'msg-roles-list'
 export const usersList = 'msg-users-list'
 

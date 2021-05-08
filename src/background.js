@@ -19,8 +19,8 @@ async function createWindow() {
     height: 768,
     // minWidth:1024,
     // minHeight:768,
-      //frame: false,
-      //titleBarStyle : 'hidden',
+      frame: false,
+      titleBarStyle : 'hidden',
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -28,6 +28,7 @@ async function createWindow() {
       nodeIntegration : true
     }
   })
+  win.setMenuBarVisibility(false)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

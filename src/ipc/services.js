@@ -18,6 +18,10 @@ export function registerIpcServices(){
     ipc.on(msg.ticketAdd,(receiver,args) => {onAddTicket(receiver,args)})
     ipc.on(msg.ticketRemove,(receiver,args) => {onRemoveTicket(receiver,args)})
 
+    ipc.on(msg.flagList,(receiver,args)=> {onGetFlagList(receiver,args) })
+    ipc.on(msg.flagAdd,(receiver,args) => {onSetFlag(receiver,args)})
+    ipc.on(msg.flagDestroy,(receiver,args) => {onDestroyFlag(receiver,args)})
+
     ipc.on(msg.taskFree,(rcv,args) => onTaskFree(rcv,args))
     ipc.on(msg.taskHold,(rcv,args) => onTaskHold(rcv,args))
     ipc.on(msg.taskRerun,(rcv,args) => onTaskRerun(rcv,args))
@@ -281,4 +285,22 @@ function onTaskLog(rcv,data){
     
     var result = srvc.TaskLog(data)
     result.then((data) => {  rcv.reply(msg.result(msg.taskLog),data) }).catch( (e) => { rcv.reply(msg.result(msg.taskLog),e) })
+}
+
+function onSetFlag (rcv,data){
+
+    var result = srvc.SetFlag(data)
+    result.then((data) => { rcv.reply(msg.result(msg.ticketAdd),data) }).catch( (e) => {rcv.reply(msg.result(msg.ticketAdd),e) })
+}
+
+function onDestroyFlag (rcv,data){
+
+    var result = srvc.DestroyFlag(data)
+    result.then((data) => { rcv.reply(msg.result(msg.ticketRemove),data) }).catch( (e) => { rcv.reply(msg.result(msg.ticketRemove),e) })
+}
+
+function onGetFlagList (rcv,data){
+
+    var result = srvc.ListFlags(data)
+    result.then((data) => { rcv.reply(msg.result(msg.ticketRemove),data) }).catch( (e) => { rcv.reply(msg.result(msg.ticketRemove),e) })
 }

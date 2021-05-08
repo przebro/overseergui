@@ -113,6 +113,9 @@ const udp = new DataProvider(msg.userDelete)
 const tlp = new DataProvider(msg.ticketList)
 const trp = new DataProvider(msg.ticketRemove)
 const tdp = new DataProvider(msg.ticketAdd)
+const fap = new DataProvider(msg.flagAdd)
+const fdp = new DataProvider(msg.flagDestroy)
+const flp = new DataProvider(msg.flagList)
 const ptd = new DataProvider(msg.poolTaskDetail)
 
 const dlgp = new DataProvider(msg.definitionGroupList)
@@ -150,3 +153,7 @@ export {dtdp as definitionTaskDetailProvider}
 export {top as definitionOrderProvider}
 
 export {tgp as taskLogProvider}
+
+export {fap as flagAddProvider}
+export {fdp as flagDestroyProvider}
+export {flp as flagListProvider}

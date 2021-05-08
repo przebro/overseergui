@@ -18,7 +18,7 @@
                 
                 <v-spacer></v-spacer>
                 <add-ticket />
-                <v-btn  color="button" depressed small>Add Flag <v-icon>{{icons.mdiFlagPlusOutline}}</v-icon></v-btn>
+                <add-flag />
                 
                 <!-- Action on resources -->
         </v-toolbar>  
@@ -46,13 +46,15 @@ import AddTicket from '@/components/AddTicket.vue'
 import { mdiFlagPlusOutline } from '@mdi/js';
 import { mdiBookmarkPlusOutline } from '@mdi/js';
 import {ticketAddProvider,ticketRemoveProvider,ticketListProvider} from '../msg/provider'
+import AddFlag from '../components/AddFlag.vue';
 
 export default {
   name: 'Resources',
   components: {
     TicketsComponent,
     FlagsComponent,
-    AddTicket
+    AddTicket,
+    AddFlag
 
   },
   data(){

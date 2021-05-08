@@ -11,6 +11,7 @@
                 <task-log :taskID="logID" :data="logData" />
             </v-dialog>
             <add-ticket />
+            <add-flag />
             <!-- -->
         </v-toolbar>
         <active-task-list :tasks="items" @selected="onTaskDetail" @taskAction="onTaskAction" @taskLog="getTaskLog" />
@@ -23,6 +24,7 @@
 <script>
 
 import AddTicket from '@/components/AddTicket.vue'
+import AddFlag   from '@/components/AddFlag.vue'
 import ActiveTaskList from '../components/pool/ActiveTaskList.vue'
 import TaskDetail from '../components/pool/TaskDetail.vue'
 import SearchMenu from '../components/pool/SearchMenu.vue'
@@ -31,21 +33,24 @@ definitionListGroupProvider,
 definitionListTaskProvider,
 definitionOrderProvider,
 taskLogProvider,
-ticketAddProvider
+ticketAddProvider,
+flagAddProvider
 } from '../msg/provider'
 import OrderTask from '../components/OrderTask.vue'
 import TaskLog from '../components/pool/TaskLog.vue'
+
 
 
 export default {
     name: 'Pool',
     components: {
         AddTicket,
+        AddFlag,
         ActiveTaskList,
         TaskDetail,
         SearchMenu,
         OrderTask,
-        TaskLog
+        TaskLog,
         
     },
     data(){
@@ -185,6 +190,7 @@ export default {
         definitionOrderProvider.Listen(this.$options.name,this.onDefinitionOrderResult)
         taskLogProvider.Listen(this.$options.name,this.onGetTaskLog)
         ticketAddProvider.Listen(this.$options.name,this.onTicketAction)
+        flagAddProvider.Listen(this.$options.name,this.onTicketAction)
       
         
         this.interval = setInterval(this.onRefreshResults,2000)

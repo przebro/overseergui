@@ -373,3 +373,33 @@ export function TaskLog(data){
     }
 ))
 }
+
+
+export function SetFlag(data){
+    return new Promise((resolve,reject) =>
+        resourceService.SetFlag(data,md, function(err,msg) {
+            if (err){ return reject(err)}
+            resolve(msg)
+        }
+    ))
+}
+export function DestroyFlag(data){
+    
+    return new Promise( (resolve,reject) =>
+        resourceService.DestroyFlag(data,md,function(err,msg) {
+            if (err){ return reject(err)}
+            resolve(msg)
+        }
+    ))
+}
+
+export function ListFlags(filter){
+
+    return new Promise( (resolve,reject) => {
+            var data = []
+            var stream = resourceService.ListFlags(filter,md);
+            stream.on('data',(result) => { data.push(result) })
+            stream.on('error',(err) =>{ reject(err)})
+            stream.on('end',() =>{ resolve(data)})
+        });
+}

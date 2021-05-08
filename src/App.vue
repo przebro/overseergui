@@ -1,7 +1,9 @@
 <template>
-  <v-app>
+  <v-app id="win">
+    <v-system-bar app class="draggable" color="secondary" dark dense flat>
+    </v-system-bar>
     <v-navigation-drawer color="primary" dark permanent app expand-on-hover><navigator/></v-navigation-drawer>
-    <v-main >
+    <v-main>
           <router-view/>
     </v-main>
     <v-footer color="secondary" height="24px" app />
@@ -10,18 +12,29 @@
 </template>
 
 <style>
-/* html {
+html {
   overflow-y: hidden
 }
 html::-webkit-scrollbar {
   width: 0px; 
   
-} */
+}
 
-/* body {
+.draggable {
+  -webkit-app-region: drag
+}
+#win{
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      align-items: stretch;
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+ /* body {
     overflow-x: hidden;
-  }
-
+  } */
+/*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

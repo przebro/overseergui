@@ -1,6 +1,6 @@
 <template>
 
-    <v-dialog v-model="isVisible" width="48 0">
+    <v-dialog v-model="isVisible" width="480">
       <template v-slot:activator="{ on, attrs }">
           <v-btn  color="button"  small depressed class="mx-2" v-bind="attrs" v-on="on">Add Ticket<v-icon>{{icons.mdiBookmarkPlusOutline}}</v-icon></v-btn>
       </template>
@@ -28,7 +28,7 @@
 
          <v-card-actions>
              <v-spacer></v-spacer>
-             <v-btn tile depressed text @click="AddTicket()">Add</v-btn>
+             <v-btn tile depressed text @click="AddTicket()" :disabled="isDisabled == true" >Add</v-btn>
          </v-card-actions>
       </v-card>
     </v-dialog>
@@ -66,9 +66,17 @@ export default {
             } else {
                 return true;
             }
-        },
+        }
     },
-      watch: {
+    computed:{
+        isDisabled(){
+            if (this.name == ""){
+                return true
+            }
+            return false
+        }
+    },
+    watch: {
        selectedDate (val) {
          this.odate = val.split('-').join('')
        }
